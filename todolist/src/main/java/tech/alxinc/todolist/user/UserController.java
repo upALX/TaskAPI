@@ -33,8 +33,8 @@ public class UserController {
 
         userModel.setPassword(passwdHashed);
 
-        this.userRepository.save(userModel);
+        var newUser = this.userRepository.save(userModel);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body("User created");
+        return ResponseEntity.status(HttpStatus.CREATED).body("User created:" + newUser);
     }
 }
