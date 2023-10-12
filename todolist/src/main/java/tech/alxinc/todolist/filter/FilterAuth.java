@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -48,15 +49,21 @@ public class FilterAuth extends OncePerRequestFilter{
         System.out.println("password:");
         System.out.println(password);
 
-        var IsUser = this.userRepository.findByUsername(username);
+        var User = this.userRepository.findByUsername(username);
 
-        if(IsUser == null){
+        if(User == null){
             response.sendError(401, "User without authorization");
         }else{
-            
+            var passwordVerified = BCrypt.verifyer().verify(password.toCharArray(), User.getPassword());
+
+            if(passwordVerified.verified){
+                filterChain.doFilter(request, response);
+
+            }else{
+                response.sendError(401, "User without authorization");
+            }
         }
 
-        filterChain.doFilter(request, response);
     }
     
 }
