@@ -22,49 +22,50 @@ public class FilterAuth extends OncePerRequestFilter{
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-            throws ServletException, IOException {
+    throws ServletException, IOException {
 
-        var authorization = request.getHeader("Authorization");
+        var servetPath = request.getServletPath();
 
+        if (servetPath.equals("/task/")){
+            var authorization = request.getHeader("Authorization");
 
+            System.out.println("Authorization:");
+            System.out.println(authorization);
 
-        System.out.println("Authorization:");
-        System.out.println(authorization);
+            var AuthEncoded = authorization.substring("Basic".length()).trim();
 
-        var AuthEncoded = authorization.substring("Basic".length()).trim();
+            byte[] ByteArrayAuthDecode = Base64.getDecoder().decode(AuthEncoded);
 
-        byte[] ByteArrayAuthDecode = Base64.getDecoder().decode(AuthEncoded);
+            var AuthDecoded = new String(ByteArrayAuthDecode);
 
-        var AuthDecoded = new String(ByteArrayAuthDecode);
+            String[] credentials = AuthDecoded.split(":");
 
-        String[] credentials = AuthDecoded.split(":");
+            String username = credentials[0];
 
-        String username = credentials[0];
+            System.out.println("username:");
+            System.out.println(username);
 
-        System.out.println("username:");
-        System.out.println(username);
+            String password = credentials[1];
 
-        String password = credentials[1];
+            System.out.println("password:");
+            System.out.println(password);
 
-        System.out.println("password:");
-        System.out.println(password);
+            var User = this.userRepository.findByUsername(username);
 
-        var User = this.userRepository.findByUsername(username);
-
-        if(User == null){
-            response.sendError(401, "User without authorization");
-        }else{
-            var passwordVerified = BCrypt.verifyer().verify(password.toCharArray(), User.getPassword());
-
-            if(passwordVerified.verified){
-                filterChain.doFilter(request, response);
-
-            }else{
+            if(User == null){
                 response.sendError(401, "User without authorization");
+            }else{
+                var passwordVerified = BCrypt.verifyer().verify(password.toCharArray(), User.getPassword());
+
+                if(passwordVerified.verified){
+                    filterChain.doFilter(request, response);
+
+                }else{
+                    response.sendError(401, "User without authorization");
+                }
             }
+        }else{
+            filterChain.doFilter(request, response);
         }
-
     }
-    
 }
-
