@@ -12,8 +12,20 @@ This project is about an task management developed with Java and Sprint boot.
 ![Hibernate](https://img.shields.io/badge/-Hibernate-05122A?style=flat&logo=Hibernate)&nbsp;
 ![Apache-Maven](https://img.shields.io/badge/-Apache_Maven-05122A?style=flat&logo=Apache-Maven)&nbsp;
 
+## Features 
+- You can register users on /user
+- You can modify your tasks and only your tasks on /task/{taskId}
+- 
+  **To learn about the usage, access the [Task Management API DOCS]() **
 
 ## How to use 🫁
+
+### USER MODE
+1 - on [THIS LINK]() use the aplication using the endpoints. 
+
+2 - access the payloads and endpoints on [API docs](https://upalx.notion.site/Task-Management-API-1ff3c2ac9c454a0480eaf3e05cfc8970?pvs=4).
+
+---
 
 ### DEV MODE
 **requirements**
@@ -39,16 +51,11 @@ git clone
 - **vscjava.vscode-spring-boot-dashboard**
 - vscjava.vscode-java-pack
 
-3 - Run the project on debug mode
+3 - Run the project on CLI in root of path project: 
 
-**press the button RUN on vscode and access the project at port 8080**
-
----
-
-### USER MODE
-1 - on [THIS LINK]() use the aplication using the endpoints. 
-
-2 - access the payloads and endpoints on [API docs]().
+```
+mvn spring-boot:run
+```
 
 ## Make your mark :triangular_flag_on_post:      
 
