@@ -56,12 +56,19 @@ public class TaskController {
     }
 
     @PutMapping("/{id}")
-    public TaskModel UpdateTask(@RequestBody TaskModel taskModel, @PathVariable UUID id, HttpServletRequest request){
+    public ResponseEntity UpdateTask(@RequestBody TaskModel taskModel, @PathVariable UUID id, HttpServletRequest request){
 
         var existentTask = this.taskRepository.findById(id).orElse(null);
+        var idUser = request.getAttribute("idUser");
 
-        Utils.copyNonNullProperties(taskModel, existentTask);
+        if(existentTask == null){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("The id of task was not found. This task does not exist!");
+        }else if((!existentTask.getUserId().equals(idUser))){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("This task exists, but belongs to another user. You can only change your tasks.");
+        }else{
+            Utils.copyNonNullProperties(taskModel, existentTask);
         
-        return this.taskRepository.save(existentTask); 
+            return ResponseEntity.status(HttpStatus.OK).body(this.taskRepository.save(existentTask)); 
+        }
     }
 }

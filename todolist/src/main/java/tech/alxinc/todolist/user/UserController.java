@@ -35,6 +35,6 @@ public class UserController {
 
         var newUser = this.userRepository.save(userModel);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
+        return ResponseEntity.status(HttpStatus.OK).body(newUser);
     }
 }
