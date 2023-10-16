@@ -1,5 +1,7 @@
 # Task API
 
+**If you exist, give the project a star 🌟**
+
 ### Overview
 This project is about an task management developed with Java and Sprint boot.
 
@@ -17,14 +19,14 @@ This project is about an task management developed with Java and Sprint boot.
 - You can register users on /user
 - You can modify your tasks and only your tasks on /task/{taskId}
 - 
-  **To learn about the usage, access the [Task Management API DOCS](https://upalx.notion.site/Task-Management-API-1ff3c2ac9c454a0480eaf3e05cfc8970?pvs=4)**
+  **To learn about the usage, access the [Task API DOCS](https://upalx.notion.site/Task-Management-API-1ff3c2ac9c454a0480eaf3e05cfc8970?pvs=4)**
 
 ## How to use 🫁
 
 ### USER MODE
 1 - on ```https://task-management-api-ppzv.onrender.com``` use the API through the endpoints. 
 
-2 - access the payloads and endpoints on [Task Management API DOC](https://upalx.notion.site/Task-Management-API-1ff3c2ac9c454a0480eaf3e05cfc8970?pvs=4).
+2 - access the payloads and endpoints on [Task API DOC](https://upalx.notion.site/Task-Management-API-1ff3c2ac9c454a0480eaf3e05cfc8970?pvs=4).
 
 ---
 
@@ -60,7 +62,7 @@ mvn spring-boot:run
 
 ## Make your mark :triangular_flag_on_post:      
 
-**If you have any problems with this app or have an idea that contributes, open a [issue](https://github.com/upALX/to-do-list/issues), [pull request](https://github.com/upALX/to-do-list/pulls) or find me on [Linkedin](https://www.linkedin.com/in/upalx/) :D**
+**If you have any problems with this app or have an idea that contributes, open a [issue](https://github.com/upALX/to-do-list/issues), [pull request](https://github.com/upALX/to-do-list/pulls) or find me on [Linkedin](https://www.linkedin.com/in/upalx/). Don't forget to give the project a star 🌟 :D**
 
 
 ## License :unlock:
