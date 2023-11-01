@@ -64,7 +64,6 @@ mvn spring-boot:run
 
 **If you have any problems with this app or have an idea that contributes, open a [issue](https://github.com/upALX/to-do-list/issues), [pull request](https://github.com/upALX/to-do-list/pulls) or find me on [Linkedin](https://www.linkedin.com/in/upalx/). Don't forget to give the project a star 🌟 :D**
 
-
 ## License :unlock:
 
 This project is under the [MIT license](https://github.com/upALX/to-do-list/blob/main/LICENSE).
