@@ -19,14 +19,14 @@ This project is about an task management developed with Java and Sprint boot.
 - You can register users on /user
 - You can modify your tasks and only your tasks on /task/{taskId}
 - 
-  **To learn about the usage, access the [Task API DOCS](https://upalx.notion.site/Task-Management-API-1ff3c2ac9c454a0480eaf3e05cfc8970?pvs=4)**
+  **To learn about the usage, access the [DOCs under swagger development]()**
 
 ## How to use 🫁
 
 ### USER MODE
 1 - on ```https://task-management-api-ppzv.onrender.com``` use the API through the endpoints. 
 
-2 - access the payloads and endpoints on [Task API DOC](https://upalx.notion.site/Task-Management-API-1ff3c2ac9c454a0480eaf3e05cfc8970?pvs=4).
+2 - access the payloads and endpoints on [DOCs under swagger development]().
 
 ---
 
@@ -70,4 +70,4 @@ This project is under the [MIT license](https://github.com/upALX/to-do-list/blob
 
 ---
 
-**Developed with 💜 by Alexandre**
+**Developed with 💜 by ME**
