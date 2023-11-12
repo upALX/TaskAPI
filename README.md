@@ -46,7 +46,7 @@ This project is about an task management developed with Java and Sprint boot.
 
 1- clone this repo on your desktop 
 ```
-git clone 
+git clone git@github.com:upALX/TaskAPI.git
 ```
 2 - Install extensions (step on vscode)
 - **vscjava.vscode-spring-initializr**
