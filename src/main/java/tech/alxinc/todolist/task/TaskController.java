@@ -25,7 +25,7 @@ public class TaskController {
     @Autowired
     private TaskRepository taskRepository;
 
-    @PostMapping("/")
+    @PostMapping("/new")
     public ResponseEntity create(@RequestBody TaskModel taskModel, HttpServletRequest request){
         System.out.println("Controller" + request.getAttribute("idUser"));
 
@@ -35,11 +35,11 @@ public class TaskController {
         var CurrentDate = LocalDateTime.now();
 
         if(CurrentDate.isAfter(taskModel.getStartAt())){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("The START date must be greater than the current date");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("The START date must be greater than the current date");
         }else if(CurrentDate.isAfter(taskModel.getEndAt())){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("The END date must be greater than the current date");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("The END date must be greater than the current date");
         }else if (taskModel.getStartAt().isAfter(taskModel.getEndAt())){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("The START date must be greater than END date");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("The START date must be greater than END date");
         }else{
             var newTask = this.taskRepository.save(taskModel);
 
@@ -62,9 +62,9 @@ public class TaskController {
         var idUser = request.getAttribute("idUser");
 
         if(existentTask == null){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("The id of task was not found. This task does not exist!");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("The id of task was not found. This task does not exist!");
         }else if((!existentTask.getUserId().equals(idUser))){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("This task exists, but belongs to another user. You can only change your tasks.");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("This task exists, but belongs to another user. You can only change your tasks.");
         }else{
             Utils.copyNonNullProperties(taskModel, existentTask);
         
