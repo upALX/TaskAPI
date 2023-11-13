@@ -19,13 +19,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import tech.alxinc.todolist.utils.Utils;
 
 @RestController
-@RequestMapping("/task")
+@RequestMapping("/tasks")
 public class TaskController {
 
     @Autowired
     private TaskRepository taskRepository;
 
-    @PostMapping("/new")
+    @PostMapping("/task/create")
     public ResponseEntity create(@RequestBody TaskModel taskModel, HttpServletRequest request){
         System.out.println("Controller" + request.getAttribute("idUser"));
 
@@ -55,7 +55,7 @@ public class TaskController {
         return ListTasks;
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/task/{id}")
     public ResponseEntity UpdateTask(@RequestBody TaskModel taskModel, @PathVariable UUID id, HttpServletRequest request){
 
         var existentTask = this.taskRepository.findById(id).orElse(null);
