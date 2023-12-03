@@ -43,7 +43,8 @@ public class TaskController {
         }else{
             var newTask = this.taskRepository.save(taskModel);
 
-            return ResponseEntity.status(HttpStatus.OK).body(newTask);
+            return ResponseEntity.status(HttpStatus.CREATED
+            ).body(newTask);
         }
     }
 
