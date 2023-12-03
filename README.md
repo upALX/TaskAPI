@@ -3,7 +3,7 @@
 **If you exist, give the project a star 🌟**
 
 ### Overview
-This project is about an task management developed with Java and Sprint boot.
+This project is about an task management developed with Java and Spring boot.
 
 ---
 
